@@ -1,0 +1,4 @@
+i. sed '2 s/Python/Perl/g' 1.txt
+ii. sed 's/\(.*\)Programming/1Scripting/' 1.txt
+iii. sed's/\/MSRIT\/CSE\/UG\///;s/\/Python.txt/Python.txt/'
+iv. sed'$s/\(.*\)Bash/1Learn Bash Programming/' 1.txt
