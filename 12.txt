@@ -1,0 +1,20 @@
+everything in terminal only
+
+*these commands take time to load so just enter each and wait...*
+
+sudo apt-get update
+sudo apt-get install docker.io
+sudo systemctl enable docker
+sudo systemctl status docker
+sudo service docker start
+sudo systemctl start docker
+sudo docker run hello
+
+vi myscript.sh
+(inside the shell script)
+#!/bin/bash
+echo "HELLO WORLD"
+
+sh myscript.sh
+
+(if the teacher asks anything extra just tell only this much was done for us and we dk anything more)
