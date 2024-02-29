@@ -1,0 +1,75 @@
+//commands to execute in terminal in case its not installed:
+//do it line by line in the terminal
+// sudo apt get install xml twig tools
+// sudo apt get install xsltproc
+
+//create and type this in sample.xml file
+<?xml version="1.0" encoding="UTF-8"?>
+<university>
+	<students>
+		<student>
+			<serialNumber>1</serialNumber>
+			<studName>Alex</studName>
+			<usn>1RITCS001</usn>
+			<deptName>CSE</deptName>
+		</student>
+		<student>
+			<serialNumber>2</serialNumber>
+			<studName>Smith</studName>
+			<usn>1RITDS040</usn>
+			<deptName>DS</deptName>
+		</student>
+		<student>
+			<serialNumber>3</serialNumber>
+			<studName>Saliena</studName>
+			<usn>1RITCV051</usn>
+			<deptName>Civil</deptName>
+		</student>
+		<student>
+			<serialNumber>4</serialNumber>
+			<studName>Elizabeth</studName>
+			<usn>1RITME011</usn>
+			<deptName>Mechanical</deptName>
+		</student>
+	</students>
+	<departments>
+		<department>
+			<serialNumber>1</serialNumber>				<DeptName>CSE</DeptName>
+			<DeptName>CSE</DeptName>
+			<departmentId>01</departmentId>
+			<totalEnrolledStudents>170</totalEnrolledStudents>
+		</department>
+		<department>
+			<serialNumber>2</serialNumber>
+			<DeptName>DS</DeptName>
+			<departmentId>02</departmentId>
+			<totalEnrolledStudents>188</totalEnrolledStudents>
+		</department>
+		<department>
+			<serialNumber>3</serialNumber>
+			<DeptName>Civil</DeptName>
+			<departmentId>03</departmentId>
+			<totalEnrolledStudents>160</totalEnrolledStudents>
+		</department>
+		<department>
+			<serialNumber>4</serialNumber>
+			<DeptName>Mechanical</DeptName>
+			<departmentId>04</departmentId>
+			<totalEnrolledStudents>150</totalEnrolledStudents>
+		</department>
+	</departments>
+</university>
+
+//execute these commands in terminal:
+// cat sample.xml
+//a) xmlstarlet sel -t -c "//student" sample.xml>students.xml
+// cat students.xml
+//b) nano replace_tags.sh
+// (in the shell) 
+// sed -i 's/<studName>/<DeptName>/g' sample.xml
+// sed -i 's/<\/studName>/<\/DeptName>/g' sample.xml
+//press "Ctrl + X" after this
+// chmod +x replace_tags.sh
+// ./replace_tags.sh
+//c) xml starlet sel -t -v"//usn" sample.xml > usn_values.txt
+// cat usn_values.txt
