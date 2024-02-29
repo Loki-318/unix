@@ -1,0 +1,5 @@
+i. find .-type f -perm 0777
+ii. find .-type f -exec +t {} +
+iii. find .-type d -perm 777 -exec chmod 755 {} +
+iv. find .-type f -mtime -20
+    find .-type f -atime -20
