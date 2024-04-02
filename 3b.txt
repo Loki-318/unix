@@ -1,0 +1,15 @@
+#!/bin/bash
+filename="something.txt"
+if [ -e "$filename" ]
+then
+	echo "Filename: $filename exists"
+	mv "$filename" "${filename}_old"
+	echo "Renamed $filename to ${filename}_old"
+	
+	touch $filename
+	echo "New file created: $filename"
+else
+	echo "Filename: $filename does not exist"
+	touch $filename
+	echo "New file created: $filename"
+fi
