@@ -1,0 +1,11 @@
+#!/bin/bash
+space_storage=$( df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+echo "System storage: $space_storage %"
+
+if [ "$space_storage" -gt 80 ]
+then
+	echo "Low system storage"
+
+	echo "Files greater than 1GB: "
+	find / -type f -size +1G -exec ls lh {} \; 2>/dev/null
+fi
