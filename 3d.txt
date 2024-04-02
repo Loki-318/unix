@@ -1,0 +1,10 @@
+#!/bin/bash
+name="ABC"
+age=35
+city="Bengaluru"
+echo "Name: $name"
+echo "Age: $age"
+echo "City: $city"
+
+greeting="hello, my name is $name. i am $age years old and i live in $city"
+echo "$greeting"
