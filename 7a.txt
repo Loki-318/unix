@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <time.h>
+#include <grp.h>
+
+void listFiles(char *path)
+{
+	DIR *dir;
+	struct dirent *entry;
+	struct stat fileStat;
+	
+	if((dir = opendir(path)) == NULL)
+	{
+		perror("Error opening directory");
+		exit(EXIT_FAILURE);
+	}
+	printf("%-10s %-8s %-8s %-8s %-12s %s\n", "Permissions", "Links", "Owners", "Groups", "Size", "Last modified");
+	while((entry = readdir(dir)) != NULL)
+	{
+		char filePath[1024];
+		snprintf(filePath, sizeof(filePath), "%s/%s", path, entry->d_name);
+		if(stat(filePath, &fileStat) < 0)
+		{
+			perror("Error getting the status");
+			exit(EXIT_FAILURE);
+		}
+		struct passwd *owner = getpwuid(fileStat.st_uid);
+		struct group *group = getgrgid(fileStat.st_gid);
+		printf("%s %2lu %-8s %-8s %8ld %s %s\n",
+			(S_ISDIR(fileStat.st_mode))?"d":"-",
+			fileStat.st_nlink,
+			owner->pw_name,
+			group->gr_name,
+			fileStat.st_size,
+			ctime(&fileStat.st_mtime),
+			entry->d_name);
+	}
+	closedir(dir);
+}
+int main(int argc, char *argv[])
+{
+	if(argc != 2)
+	{
+		fprintf(stderr, "Usage: %s <directory>\n",argv[0]);
+		exit(EXIT_FAILURE);
+	}
+	listFiles(argv[1]);
+}
