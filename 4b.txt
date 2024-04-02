@@ -1,0 +1,17 @@
+#!/bin/bash
+count_text_stats(){
+	input_text=$1
+	char_count=$(echo -n "$input_text" | wc -m)
+	word_count=$(echo "$input_text" | wc -w)
+	space_count=$(echo "$input_text" | tr -cd ' ' | wc -c)
+	special_count=$(echo "$input_text" | tr -cd '[:punct:]' | wc -c)
+
+	echo "Text analysis report"
+	echo "Character count: $char_count"
+	echo "Word count: $word_count"
+	echo "Space count: $space_count"
+	echo "Special characters count: $special_count"
+}
+
+text="This is a smaple text, do whatever you want"
+count_text_stats="$text"
